@@ -35,6 +35,9 @@ func main() {
 	uError := underlyingError(err)
 	fmt.Printf("underlying error: %s (type: %T)\n",
 		uError, uError)
+	err = fmt.Errorf("=====%w", uError)
+	fmt.Printf("underlying error: %s (type: %T)\n",
+		err, err)
 	fmt.Println()
 
 	// 示例2。
@@ -99,6 +102,7 @@ func main() {
 	printError2 := func(i int, err error) {
 		if err == nil {
 			fmt.Println("nil error")
+			fmt.Errorf("hh%w", err)
 			return
 		}
 		err = underlyingError(err)

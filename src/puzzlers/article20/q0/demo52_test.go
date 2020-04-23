@@ -43,3 +43,13 @@ func testIntroduce(t *testing.T) { // 请注意这个测试函数的名称。
 	}
 	t.Logf("The expected introduce is %q.\n", expected)
 }
+
+func TestIntroduce(t *testing.T) { // 请注意这个测试函数的名称。
+	intro := introduce()
+	expected := "Welcome to my Golang column."
+	if intro != expected {
+		t.Errorf("The actual introduce %q is not the expected.",
+			intro)
+	}
+	t.Logf("The expected introduce is %q.\n", expected)
+}
