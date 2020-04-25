@@ -18,6 +18,7 @@ func calculate(x int, y int, op operate) (int, error) {
 // 方案2。
 type calculateFunc func(x int, y int) (int, error)
 
+// 这就是个闭包，动态地生成程序逻辑
 func genCalculator(op operate) calculateFunc {
 	return func(x int, y int) (int, error) {
 		if op == nil {

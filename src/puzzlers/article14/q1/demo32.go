@@ -29,6 +29,8 @@ func main() {
 	// 示例1。
 	dog := Dog{"little pig"}
 	fmt.Printf("The dog's name is %q.\n", dog.Name())
+	//如果我们使用一个变量给另外一个变量赋值，那么真正赋给后者的，并不是前者持有的那个值，而是该值的一个副本
+	//当我们给一个接口变量赋值的时候，该变量的动态类型会与它的动态值一起被存储在一个专用的数据结构中
 	var pet Pet = dog
 	dog.SetName("monster")
 	fmt.Printf("The dog's name is %q.\n", dog.Name())

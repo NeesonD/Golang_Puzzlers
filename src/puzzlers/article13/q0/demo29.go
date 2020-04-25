@@ -20,14 +20,46 @@ func (ac AnimalCategory) String() string {
 		ac.family, ac.genus, ac.species)
 }
 
+func (ac AnimalCategory) cc(x int) string {
+	fmt.Print(x)
+	return ""
+}
+
+func (ac AnimalCategory) dd(x int) string {
+	fmt.Print(x)
+	return ""
+}
+
+type AnimalCategory2 struct {
+	kingdom string // 界。
+	phylum  string // 门。
+	class   string // 纲。
+	order   string // 目。
+	family  string // 科。
+	genus   string // 属。
+	species string // 种。
+}
+
+func (ac AnimalCategory2) dd2(x int) string {
+	fmt.Print(x)
+	return ""
+}
+
 // 示例2。
 type Animal struct {
 	scientificName string // 学名。
-	AnimalCategory        // 动物基本分类。
+	//dd string // 学名。
+	AnimalCategory // 动物基本分类。
+	AnimalCategory2
 }
 
 // 该方法会"屏蔽"掉嵌入字段中的同名方法。
 func (a Animal) String() string {
+	return fmt.Sprintf("%s (category: %s)",
+		a.scientificName, a.AnimalCategory)
+}
+
+func (a Animal) cc() string {
 	return fmt.Sprintf("%s (category: %s)",
 		a.scientificName, a.AnimalCategory)
 }
@@ -55,6 +87,9 @@ func main() {
 		AnimalCategory: category,
 	}
 	fmt.Printf("The animal: %s\n", animal)
+	fmt.Printf("The animal: %s\n", animal.AnimalCategory.cc(5))
+	fmt.Printf("The animal: %s\n", animal.cc())
+	fmt.Printf("The animal: %s\n", animal.dd(3))
 
 	// 示例3。
 	cat := Cat{
